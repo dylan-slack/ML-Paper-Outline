@@ -1,0 +1,132 @@
+\newif\ifabstract
+\abstracttrue
+ \abstractfalse 
+\newif\iffull
+\ifabstract \fullfalse \else \fulltrue \fi
+
+%%%% Imports %%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{article}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{xspace}
+\usepackage{theorem}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{url}
+\usepackage{subcaption}
+\usepackage{graphics}
+\usepackage{etoolbox}
+\usepackage{colordvi}
+\usepackage{xcolor}
+\usepackage{import}
+\usepackage{csquotes}
+\usepackage{caption}
+\textheight 9.3in \advance \topmargin by -1.0in \textwidth 6.7in
+\advance \oddsidemargin by -0.8in
+\newcommand{\myparskip}{3pt}
+\parskip \myparskip
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%% Theory %%%%%%%%%%%%%%%%%%
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{assumption}{Assumption}[section]
+\newtheorem{definition}{Definition}[section]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Math %%%%%%%%%%%%%%%%%%%%
+\input{math}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%$ Misc Commands %%%%%%%%%%%%%%
+% Block quotes
+\AtBeginEnvironment{quote}{\singlespacing\small}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Comments %%%%%%%%%%%%%%%%%
+\newif\ifcomments
+\commentstrue
+\ifcomments
+   \providecommand{\sameer}[2][]{{\protect\color{violet}{[\textbf{dylan}:\textbf{#1} #2]}}}
+    \providecommand{\dylan}[2][]{{\protect\color{blue}{[\textbf{sara}:\textbf{#1} #2]}}}
+\else
+    \providecommand{\dylan}[2][]{}
+    \providecommand{\sara}[2][]{}
+\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Setup bib %%%%%%%%%%%%%%%%%
+\usepackage[backend=bibtex,
+style=authoryear,
+bibencoding=ascii
+]{biblatex}
+\addbibresource{bibliography.bib}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\title{Writing ML Papers}
+
+\author{Dylan Slack}
+
+\begin{titlepage}
+\maketitle
+
+\thispagestyle{empty}
+
+\begin{abstract}
+
+\noindent
+A good form for the abstract to follow is:
+\begin{enumerate}
+    \item Problem
+    \item Current Solution
+    \item Problems with current solution
+    \item What our approach is to the problem
+    \item How it corrects the problems
+    \item Brief description of results
+    \item Summary of the rest of the paper (landmarks)
+\end{enumerate}
+
+\noindent
+Here's an example of a good abstract, recommended in \parencite{liptonwriting}.  The abstract is from \parencite{sanjoymixgauss}. 
+
+\begin{displayquote}
+Mixtures of Gaussians are among the most fundamental and widely used statistical models. Current techniques for learning such mixtures from data are local search heuristics with weak performance guarantees. We present the first provably correct algorithm for learning a mixture of Gaussians. The algorithm is very simple and returns the true centers of the Gaussians to within the precision specified by the user, with high probability. It runs in time only linear in the dimension of the data and polynomial in the number of Gaussians.
+\end{displayquote}
+
+This abstract follows the form above.  We can break every sentence down into the point it covers.
+
+\begin{displayquote}
+\textbf{(1)} Mixtures of Gaussians are among the most fundamental and widely used statistical models. \textbf{(2,3)} Current techniques for learning such mixtures from data are local search heuristics with weak performance guarantees. \textbf{(4)} We present the first provably correct algorithm for learning a mixture of Gaussians. \textbf{(5)} The algorithm is very simple and returns the true centers of the Gaussians to within the precision specified by the user, with high probability. \textbf{(6,7)} It runs in time only linear in the dimension of the data and polynomial in the number of Gaussians.
+\end{displayquote}
+
+
+
+
+\end{abstract}
+
+\end{titlepage}
+
+\section{Introduction}
+\label{sec: Introduction}
+
+\section{Experiments}
+\label{sec: Experiments}
+
+
+
+
+
+
+\printbibliography
+
+\end{document}
+
